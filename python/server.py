@@ -14,7 +14,7 @@ class MathService(factorial_pb2.MathServiceServicer):
     response = 1
 
     if(requestedN > 1):
-        channel = grpc.insecure_channel('factorial:36215')
+        channel = grpc.insecure_channel('python-factorial:36215')
         stub = factorial_pb2.MathServiceStub(channel)
         rpcResponse = stub.Factorial(factorial_pb2.FactorialRequest(n=requestedN - 1))
         response = requestedN * rpcResponse.result
