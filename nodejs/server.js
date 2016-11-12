@@ -15,8 +15,8 @@ function getServer() {
 if (require.main === module) {
     // If this is run as a script, start a server on an unused port
     var server = getServer();
+    console.log('Server starting on port ' + config.port);
     server.bind('0.0.0.0:' + config.port, grpc.ServerCredentials.createInsecure());
-    console.log('Server started');
     server.start();
 }
 
