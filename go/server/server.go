@@ -19,6 +19,8 @@ type server struct{}
 
 // SayHello implements helloworld.GreeterServer
 func (s *server) Factorial(ctx context.Context, in *pb.FactorialRequest) (*pb.FactorialResponse, error) {
+	log.Printf("Factorial server got req with n: %d", in.N)
+
 	if in.N == 1 {
 		return &pb.FactorialResponse{Result: 1}, nil
 	}
@@ -40,6 +42,8 @@ func (s *server) Factorial(ctx context.Context, in *pb.FactorialRequest) (*pb.Fa
 }
 
 func main() {
+	log.Printf("Factorial server starting up!")
+
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
