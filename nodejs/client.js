@@ -1,11 +1,8 @@
-var HOST = 'localhost'; // 146.148.105.55
-var PORT = 36215;
-var PROTO_PATH = __dirname + '/factorial.proto';
-
+var config = require('./config');
 var grpc = require('grpc');
-var protoDescriptor = grpc.load(PROTO_PATH);
+var protoDescriptor = grpc.load(config.protoPath);
 
-var client = new protoDescriptor.MathService(HOST + ':' + PORT, grpc.credentials.createInsecure());
+var client = new protoDescriptor.MathService(config.host + ':' + config.port, grpc.credentials.createInsecure());
 
 var input = {
     n: 5

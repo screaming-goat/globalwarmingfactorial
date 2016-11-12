@@ -1,10 +1,8 @@
-var HOST = 'localhost'; // 146.148.105.55
-var PORT = 36215;
-var PROTO_PATH = __dirname + '/factorial.proto';
+var config = require('./config');
 
 var grpc = require('grpc');
-var protoDescriptor = grpc.load(PROTO_PATH);
-var client = new protoDescriptor.MathService(HOST + ':' + PORT, grpc.credentials.createInsecure());
+var protoDescriptor = grpc.load(config.protoPath);
+var client = new protoDescriptor.MathService(config.host + ':' + config.port, grpc.credentials.createInsecure());
 
 function getServer() {
     var server = new grpc.Server();
@@ -23,7 +21,6 @@ if (require.main === module) {
 
 function getFactorial(call, callback) {
     var input = call.request.n;
-    console.log('got', input);
     if (input === 1) {
         callback(null, {result: 1});
     } else {
