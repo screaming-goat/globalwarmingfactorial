@@ -1,13 +1,13 @@
 syntax = "proto3";
 
 service MathService {
-    rpc Factorial (FactorialRequest) returns (FactorialResponse);
+    rpc Factorial (FactorialRequest) returns (FactorialResponse) {}
 }
 
 message FactorialRequest {
-    int32 n = 1;
+    uint64 n = 1;
 }
 
 message FactorialResponse {
-    int32 result = 1;
+    uint64 result = 1;
 }
