@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	address = "localhost:36215"
+	address = "factorial:36215"
 	port = ":36215"
 )
 
