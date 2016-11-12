@@ -11,17 +11,18 @@ import (
 )
 
 const (
-	address     = "localhost:36215"
+	address     = ":36215"
 	defaultName = "world"
 )
 
 func main() {
+	var serverflag = flag.String("server", "localhost", "factorial server")
 	var nflag = flag.Int64("n", 1, "input value to factorial function")
 
 	flag.Parse()
 
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
+	conn, err := grpc.Dial((*serverflag) + address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
