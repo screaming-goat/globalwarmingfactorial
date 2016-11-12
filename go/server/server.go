@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	address = "factorial:36215"
+	address = "go-factorial:36215"
 	port = ":36215"
 )
 
